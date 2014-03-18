@@ -1,0 +1,9 @@
+{
+    "displayName" : "Carrito",
+    "name" : "carrito",
+    "templateName" : "carrito",
+    "url" : "carrito.html",
+    "server": "localhost:8080",
+    "context": "/carrito.master.service.subsystem/webresources/CarritoMaster",
+    "el" : "#main"
+}

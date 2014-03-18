@@ -1,0 +1,42 @@
+<script type="text/template" id="carritoList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(carritos, function(carrito) { %>
+    <tr>
+		<td><%= htmlEncode(carrito.getDisplay('name')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-carrito-edit',{id:<%= carrito.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-carrito-delete',{id:<%= carrito.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="carrito">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-carritoForm">
+    <% if(carrito.id) {%>
+    <input type="hidden" name="id" value="<%= carrito.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= carrito.get('name') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

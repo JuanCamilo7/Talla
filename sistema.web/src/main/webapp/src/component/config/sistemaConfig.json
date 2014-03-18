@@ -1,0 +1,9 @@
+{
+    "displayName" : "Sistema",
+    "name" : "sistema",
+    "templateName" : "sistema",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/sistema.service.subsystem.web/webresources/Sistema",
+    "el" : "#main"
+}

@@ -1,0 +1,9 @@
+{
+    "displayName" : "Promocion",
+    "name" : "promocion",
+    "templateName" : "promocion",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/promocion.service.subsystem.web/webresources/Promocion",
+    "el" : "#main"
+}

@@ -1,0 +1,9 @@
+{
+    "displayName" : "Usuario",
+    "name" : "usuario",
+    "templateName" : "usuario",
+    "url" : "usuario.html",
+    "server": "localhost:8080",
+    "context": "/usuario.master.service.subsystem/webresources/UsuarioMaster",
+    "el" : "#main"
+}

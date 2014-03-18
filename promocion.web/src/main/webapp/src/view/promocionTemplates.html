@@ -1,0 +1,68 @@
+<script type="text/template" id="promocionList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+		 <th>fechaInicial</th>
+		 <th>fechaFinal</th>
+		 <th>nuevoPrecio</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(promocions, function(promocion) { %>
+    <tr>
+		<td><%= htmlEncode(promocion.getDisplay('name')) %></td>
+		<td><%= htmlEncode(promocion.getDisplay('fechaInicial')) %></td>
+		<td><%= htmlEncode(promocion.getDisplay('fechaFinal')) %></td>
+		<td><%= htmlEncode(promocion.getDisplay('nuevoPrecio')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-promocion-edit',{id:<%= promocion.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-promocion-delete',{id:<%= promocion.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="promocion">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-promocionForm">
+    <% if(promocion.id) {%>
+    <input type="hidden" name="id" value="<%= promocion.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= promocion.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="fechaInicial">fechaInicial</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaInicial"  name="fechaInicial" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fechaInicial').datepicker({autoclose:true});
+        	$('#fechaInicial').datepicker('setDate',new Date(<%= promocion.get('fechaInicial') %>));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+			<label for="fechaFinal">fechaFinal</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaFinal"  name="fechaFinal" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fechaFinal').datepicker({autoclose:true});
+        	$('#fechaFinal').datepicker('setDate',new Date(<%= promocion.get('fechaFinal') %>));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+		<label for="nuevoPrecio">nuevoPrecio</label>
+    	<input type="text" class="form-control" id="nuevoPrecio" name="nuevoPrecio" placeholder="Enter value" value="<%= promocion.get('nuevoPrecio') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 
